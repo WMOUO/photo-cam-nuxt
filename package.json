@@ -1,0 +1,40 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/fonts": "0.11.1",
+    "@nuxt/scripts": "0.11.6",
+    "@primevue/forms": "^4.2.5",
+    "@primevue/themes": "^4.2.5",
+    "@tailwindcss/vite": "^4.0.4",
+    "nuxt": "^3.16.2",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.2.5",
+    "tailwindcss": "^4.0.4",
+    "tailwindcss-primeui": "^0.4.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0",
+  "devDependencies": {
+    "@nuxtjs/color-mode": "^3.5.2",
+    "@nuxtjs/tailwindcss": "6.13.2",
+    "@primeuix/themes": "^1.0.3",
+    "@primevue/nuxt-module": "^4.3.3",
+    "@tailwindcss/postcss": "^4.1.4",
+    "@tailwindcss/vite": "^4.1.4",
+    "@vueuse/core": "^13.1.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.4",
+    "unplugin-auto-import": "^19.1.2",
+    "unplugin-vue-components": "^28.5.0"
+  }
+}
