@@ -167,7 +167,6 @@ const capturePhoto = async () => {
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
     ctx.fillText(`To[${content.value}]`, width / 2, height / 2)
-    document.fonts.check('66px Lexend') 
     imageUrl = canvas.value.toDataURL('image/png', 1)
     previewUrl.value = imageUrl
   } catch (err) {
@@ -207,33 +206,55 @@ const closePreview = () => {
   previewUrl.value = ''
 }
 
-const confirmPrint = () => {
-  const win = window.open('', '_blank')
-  if (!win) return
-  const style = `
-    @media print {
-      @page {
-        size: A6 landscape;
-        margin: 0;
+// const confirmPrint = () => {
+//   const win = window.open('', '_blank')
+//   if (!win) return
+//   const style = `
+//     @media print {
+//       @page {
+//         size: A6 landscape;
+//         margin: 0;
+//       }
+//       body {
+//         margin: 0;
+//         background: black;
+//       }
+//       img {
+//         width: 100vw;
+//         height: 100vh;
+//         object-fit: cover;
+//       }
+//     }
+//   `
+//   win.document.write(`
+//     <!DOCTYPE html>
+//     <html><head><style>${style}</style></head>
+//     <body><img src="${previewUrl.value}" onload="window.print(); window.close();" /></body></html>
+//   `)
+//   win.document.close()
+//   closePreview()
+// }
+
+const confirmPrint = async () => {
+  if (!previewUrl.value)return toast.add({ severity: 'info', summary: '列印中', detail: '正在送出至印表機', life: 3000 })
+  try {
+    const res = await fetch('/api/print',
+      { method: 'POST',
+        headers:
+          { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ image: previewUrl.value, toText: content.value })
       }
-      body {
-        margin: 0;
-        background: black;
-      }
-      img {
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover;
-      }
+    )
+    const result = await res.json()
+    if (result.status === 'ok') {
+      toast.add({ severity: 'success', summary: '列印成功', detail: '照片已送出列印', life: 3000 })
+    } else {
+      throw new Error(result.message || '列印失敗')
     }
-  `
-  win.document.write(`
-    <!DOCTYPE html>
-    <html><head><style>${style}</style></head>
-    <body><img src="${previewUrl.value}" onload="window.print(); window.close();" /></body></html>
-  `)
-  win.document.close()
-  closePreview()
+  } catch (err: any) {
+    toast.add({ severity: 'error', summary: '列印錯誤', detail: err.message || '無法列印', life: 3000 })
+  }
+closePreview()
 }
 
 const goToGallery = () => {
