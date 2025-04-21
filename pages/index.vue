@@ -38,12 +38,12 @@
 
     <!-- To[...] 文字輸入 -->
     <div class="absolute inset-0 flex items-center justify-center">
-      <div class="inline-flex items-center text-white text-6xl font-bold">
+      <div class="inline-flex items-center text-white text-6xl font-black">
         <span>TO[</span>
         <input
           type="text"
           v-model="content"
-          class="bg-transparent border-none focus:outline-none text-white font-bold text-6xl text-center p-0 m-0 w-auto min-w-[2ch] tracking-normal"
+          class="bg-transparent border-none focus:outline-none text-white font-black text-6xl text-center p-0 m-0 w-auto min-w-[2ch] tracking-normal"
           @input="adjustWidth"
           ref="inputEl"
         />
@@ -161,7 +161,7 @@ const capturePhoto = async () => {
     ctx.drawImage(video.value, 0, 0, width, height)
     ctx.restore()
     console.log(ctx.font)
-    ctx.font = '66px "Lexend", sans-serif'
+    ctx.font = '900 66px "Lexend", sans-serif'
     console.log(ctx.font)
     ctx.fillStyle = 'white'
     ctx.textAlign = 'center'

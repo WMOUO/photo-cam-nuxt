@@ -12,7 +12,7 @@
             <i class="material-icons !text-3xl text-black">arrow_back_ios_new
             </i>
         </Button>
-        <h1 class="text-3xl font-bold mx-auto text-black">photo</h1>
+        <h1 class="text-3xl mx-auto text-black font-black">photo</h1>
       </div>
   
       <div v-if="loading" class="mt-10 text-lg text-gray-600">載入中...</div>

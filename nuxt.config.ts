@@ -5,7 +5,13 @@ import Aura from '@primeuix/themes/aura';
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxt/scripts', '@nuxt/fonts','@primevue/nuxt-module','@nuxtjs/color-mode'],
+  modules: [
+    '@nuxt/scripts',
+    '@nuxt/fonts',
+    '@primevue/nuxt-module',
+    '@nuxtjs/color-mode',
+    // '@nuxtjs/google-fonts'
+  ],
   app: {
     head: {
       link: [
@@ -38,5 +44,12 @@ export default defineNuxtConfig({
     classPrefix: '',
     classSuffix: '-mode',
     storageKey: 'nuxt-color-mode'
-  }
+  },
+  // googleFonts: {
+  //   families: {
+  //     Lexend: [900],
+  //   },
+  //   display: 'swap',
+  //   preload: true,
+  // }
 })
