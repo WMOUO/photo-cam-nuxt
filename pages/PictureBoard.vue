@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-full flex flex-col items-center bg-gray-100">
+    <div class="w-full min-h-screen flex flex-col items-center bg-gray-100">
       <div class="fixed top-0 left-0 right-0 z-50 flex items-center px-4 py-2 bg-gray-100 w-full">
         <Button
           @click="goBack"
