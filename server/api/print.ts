@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
 
   // ✅ 這裡將圖片 POST 給 mac 的列印伺服器（例如 http://localhost:8787/print）
   try {
-    const res = await fetch('http://localhost:8787/print', {
+    const res = await fetch('https://dishes-unavailable-miles-under.trycloudflare.com/print', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ image, toText })
