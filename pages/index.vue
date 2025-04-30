@@ -209,30 +209,37 @@ const confirmPrint = () => {
   }
 
   const style = `
-    @media print {
-      @page {
-        size: A4 portrait;
-        margin: 0;
-      }
-      body {
-        margin: 0;
-        padding: 0;
-      }
-      .print-wrapper {
-        width: 148mm; /* A6 landscape 寬度 */
-        height: 105mm; /* A6 landscape 高度 */
-        position: absolute;
-        top: 0;
-        left: 0;
-        overflow: hidden;
-      }
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+  @media print {
+    @page {
+      size: A4 portrait;
+      margin: 0;
     }
-  `
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+    body {
+      position: relative;
+    }
+    .print-wrapper {
+      width: 148mm;
+      height: 105mm;
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+`
 
   win.document.write(`
     <!DOCTYPE html>
