@@ -188,12 +188,6 @@ const capturePhoto = async () => {
     console.log('✅ 上傳成功', data)
     await toast.removeGroup('uploading')
     toast.add({ severity: 'success', summary: '上傳成功', detail: '圖片已成功上傳', life: 3000 })
-    const link = document.createElement('a')
-    link.href = imageUrl
-    link.download = `captured_${Date.now()}.png`
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
   } catch (err: any) {
     await toast.removeGroup('uploading')
     toast.add({ severity: 'error', summary: '上傳失敗', detail: err?.message || '請稍後再試', life: 3000 })
@@ -213,35 +207,50 @@ const confirmPrint = () => {
     toast.add({ severity: 'error', summary: '列印錯誤', detail: '無法開啟列印視窗', life: 3000 })
     return
   }
+
   const style = `
     @media print {
       @page {
-        size: A6 landscape;
+        size: A4 portrait;
         margin: 0;
       }
       body {
         margin: 0;
-        background: black;
+        padding: 0;
+      }
+      .print-wrapper {
+        width: 105mm;
+        height: 148mm;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
       }
       img {
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
       }
     }
   `
+
   win.document.write(`
     <!DOCTYPE html>
     <html>
-      <head><style>${style}</style></head>
+      <head>
+        <style>${style}</style>
+      </head>
       <body>
-        <img src="${previewUrl.value}" onload="window.print(); window.close();" />
+        <div class="print-wrapper">
+          <img src="${previewUrl.value}" onload="window.print(); window.close();" />
+        </div>
       </body>
     </html>
   `)
   win.document.close()
   closePreview()
 }
+
 
 
 const goToGallery = () => {
