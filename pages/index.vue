@@ -230,7 +230,7 @@ const confirmPrint = () => {
         position: absolute;
         top: 0;
         left: 0;
-        transform: translate(-10mm, -10mm); /* ⬅️ 微調位置貼近左上 */
+        transform: translate(-15mm, -15mm); /* ⬅️ 微調位置貼近左上 */
         overflow: hidden;
       }
       img {
@@ -256,6 +256,7 @@ const confirmPrint = () => {
   win.document.close()
   closePreview()
 }
+
 
 const goToGallery = () => {
   router.push('/pictureBoard')
