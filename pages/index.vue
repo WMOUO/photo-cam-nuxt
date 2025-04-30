@@ -219,8 +219,8 @@ const confirmPrint = () => {
         padding: 0;
       }
       .print-wrapper {
-        width: 105mm;
-        height: 148mm;
+        width: 148mm; /* A6 landscape 寬度 */
+        height: 105mm; /* A6 landscape 高度 */
         position: absolute;
         top: 0;
         left: 0;
@@ -250,8 +250,6 @@ const confirmPrint = () => {
   win.document.close()
   closePreview()
 }
-
-
 
 const goToGallery = () => {
   router.push('/pictureBoard')
