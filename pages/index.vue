@@ -209,44 +209,43 @@ const confirmPrint = () => {
   }
 
   const style = `
-  @media print {
-    @page {
-      size: A4 portrait;
-      margin: 0;
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+      }
+      body {
+        position: relative;
+      }
+      .print-wrapper {
+        width: 148mm;
+        height: 105mm;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-10mm, -10mm); /* ⬅️ 微調位置貼近左上 */
+        overflow: hidden;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
     }
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-    }
-    body {
-      position: relative;
-    }
-    .print-wrapper {
-      width: 148mm;
-      height: 105mm;
-      position: absolute;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-    }
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-  }
-`
+  `
 
   win.document.write(`
     <!DOCTYPE html>
     <html>
-      <head>
-        <style>${style}</style>
-      </head>
+      <head><style>${style}</style></head>
       <body>
         <div class="print-wrapper">
           <img src="${previewUrl.value}" onload="window.print(); window.close();" />
