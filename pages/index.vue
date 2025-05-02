@@ -230,6 +230,9 @@ const confirmPrint = () => {
         top: 0;
         left: 0;
         overflow: hidden;
+        display: flex;
+        align-items: center;   /* 垂直置中 */
+        justify-content: center; /* 水平置中 */
       }
       img {
         width: 148mm;
