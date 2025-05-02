@@ -37,7 +37,7 @@
     </div>
 
     <!-- To[...] 文字輸入 -->
-    <div class="absolute inset-0 flex items-center justify-center">
+    <div v-if="isInputVisible" class="absolute inset-0 flex items-center justify-center">
       <div class="inline-flex items-center text-white text-6xl font-black">
         <span>TO[</span>
         <input
@@ -142,7 +142,11 @@ const adjustWidth = () => {
   })
 }
 
+const isInputVisible = ref(true)
 const capturePhoto = async () => {
+  isInputVisible.value = false
+  await nextTick() // 確保 DOM 已更新
+  await document.fonts.ready
   if (!isCameraReady.value || isUploading.value || !video.value || !canvas.value) return
   isUploading.value = true
   let imageUrl = ''
@@ -193,6 +197,7 @@ const capturePhoto = async () => {
   } finally {
     isUploading.value = false
   }
+  isInputVisible.value = true
 }
 
 const closePreview = () => {
