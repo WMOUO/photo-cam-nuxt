@@ -229,8 +229,8 @@ const confirmPrint = () => {
         position: relative;
       }
       .print-wrapper {
-        max-width: 100%;
-        max-height: 100%;
+        max-width: 148mm;
+        max-height: 105mm;
         position: absolute;
         top: 0;
         left: 0;
