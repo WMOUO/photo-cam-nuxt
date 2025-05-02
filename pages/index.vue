@@ -234,7 +234,7 @@ const confirmPrint = () => {
       img {
         width: 148mm;
         height: 105mm;
-        object-fit: cover;
+        object-fit: contain;
         display: block;
       }
     }
