@@ -211,7 +211,7 @@ const confirmPrint = () => {
   const style = `
     @media print {
       @page {
-        size: A4 landscape;
+        size: A6 landscape;
         margin: 0;
       }
       html, body {
