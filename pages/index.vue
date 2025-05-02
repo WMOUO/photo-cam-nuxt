@@ -150,9 +150,8 @@ const capturePhoto = async () => {
     await document.fonts.ready
     const ctx = canvas.value.getContext('2d')
     if (!ctx) throw new Error('無法取得 canvas context')
-    const width = video.value.videoWidth
-    const height = video.value.videoHeight
-    if (width === 0 || height === 0) throw new Error('攝影機尚未準備好')
+    const width = 1240
+    const height = 1748
     canvas.value.width = width
     canvas.value.height = height
     ctx.save()
@@ -233,8 +232,8 @@ const confirmPrint = () => {
         overflow: hidden;
       }
       img {
-        width: 100%;
-        height: 100%;
+        width: 148mm;
+        height: 105mm;
         object-fit: cover;
         display: block;
       }
