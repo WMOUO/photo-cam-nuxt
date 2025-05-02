@@ -37,7 +37,7 @@
     </div>
 
     <!-- To[...] 文字輸入 -->
-    <div v-if="isInputVisible" class="absolute inset-0 flex items-center justify-center">
+    <div class="absolute inset-0 flex items-center justify-center">
       <div class="inline-flex items-center text-white text-6xl font-black">
         <span>TO[</span>
         <input
@@ -142,11 +142,7 @@ const adjustWidth = () => {
   })
 }
 
-const isInputVisible = ref(true)
 const capturePhoto = async () => {
-  isInputVisible.value = false
-  await nextTick() // 確保 DOM 已更新
-  await document.fonts.ready
   if (!isCameraReady.value || isUploading.value || !video.value || !canvas.value) return
   isUploading.value = true
   let imageUrl = ''
@@ -154,8 +150,8 @@ const capturePhoto = async () => {
     await document.fonts.ready
     const ctx = canvas.value.getContext('2d')
     if (!ctx) throw new Error('無法取得 canvas context')
-    const width = video.value.videoWidth
-    const height = video.value.videoHeight
+    const width = 1240
+    const height = 1748
     canvas.value.width = width
     canvas.value.height = height
     ctx.save()
@@ -197,7 +193,6 @@ const capturePhoto = async () => {
   } finally {
     isUploading.value = false
   }
-  isInputVisible.value = true
 }
 
 const closePreview = () => {
@@ -223,7 +218,6 @@ const confirmPrint = () => {
         padding: 0;
         height: 100%;
         width: 100%;
-        overflow: hidden;
       }
       body {
         position: relative;
@@ -231,17 +225,17 @@ const confirmPrint = () => {
       .print-wrapper {
         width: 148mm;
         height: 105mm;
+        padding: 6mm;
         position: absolute;
         top: 0;
         left: 0;
-        overflow: hidden;
         display: flex;
         align-items: center;   /* 垂直置中 */
         justify-content: center; /* 水平置中 */
       }
       img {
-        max-width: 100%;
-        max-height: 100%;
+        width: 100%;
+        height: 100%;
         object-fit: contain;
         display: block;
       }
