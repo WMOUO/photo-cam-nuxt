@@ -154,8 +154,8 @@ const capturePhoto = async () => {
     await document.fonts.ready
     const ctx = canvas.value.getContext('2d')
     if (!ctx) throw new Error('無法取得 canvas context')
-    const width = 1240
-    const height = 1748
+    const width = video.value.videoWidth
+    const height = video.value.videoHeight
     canvas.value.width = width
     canvas.value.height = height
     ctx.save()
@@ -229,8 +229,8 @@ const confirmPrint = () => {
         position: relative;
       }
       .print-wrapper {
-        max-width: 148mm;
-        max-height: 105mm;
+        width: 148mm;
+        height: 105mm;
         position: absolute;
         top: 0;
         left: 0;
