@@ -20,17 +20,22 @@
                     margin: 0;
                 }
                 html, body {
+                    position: relative;
                     margin: 0;
                     padding: 0;
                     height: 100%;
                     width: 100%;
                     overflow: hidden;
                 }
+                header, footer, nav, .no-print {
+                    display: none !important;
+                }
                 img {
-                    width: 100%;
-                    height: 100%;
+                    width: 100% !important;
+                    height: 100% !important;
                     object-fit: cover;
                     display: block;
+                    overflow: visible !important;
                 }
                 </style>
             </head>
