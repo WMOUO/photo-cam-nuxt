@@ -235,8 +235,8 @@ const confirmPrint = () => {
         justify-content: center; /* 水平置中 */
       }
       img {
-        width: 148mm;
-        height: 105mm;
+        max-width: 100%;
+        max-height: 100%;
         object-fit: contain;
         display: block;
       }
