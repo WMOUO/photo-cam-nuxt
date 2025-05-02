@@ -150,22 +150,43 @@ const capturePhoto = async () => {
     await document.fonts.ready
     const ctx = canvas.value.getContext('2d')
     if (!ctx) throw new Error('無法取得 canvas context')
-    const width = 1240
-    const height = 1748
-    canvas.value.width = width
-    canvas.value.height = height
+
+    const targetW = 1748
+    const targetH = 1240
+    const videoW = video.value.videoWidth
+    const videoH = video.value.videoHeight
+
+    canvas.value.width = targetW
+    canvas.value.height = targetH
+
+    const videoAspect = videoW / videoH
+    const canvasAspect = targetW / targetH
+
+    let drawW, drawH, offsetX, offsetY
+    if (videoAspect > canvasAspect) {
+      drawH = targetH
+      drawW = drawH * videoAspect
+      offsetX = (targetW - drawW) / 2
+      offsetY = 0
+    } else {
+      drawW = targetW
+      drawH = drawW / videoAspect
+      offsetX = 0
+      offsetY = (targetH - drawH) / 2
+    }
+
     ctx.save()
-    ctx.translate(width, 0)
+    ctx.translate(targetW, 0)
     ctx.scale(-1, 1)
-    ctx.drawImage(video.value, 0, 0, width, height)
+    ctx.drawImage(video.value, offsetX, offsetY, drawW, drawH)
     ctx.restore()
-    console.log(ctx.font)
+
     ctx.font = '900 66px "Lexend", sans-serif'
-    console.log(ctx.font)
     ctx.fillStyle = 'white'
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
-    ctx.fillText(`To[${content.value}]`, width / 2, height / 2)
+    ctx.fillText(`To[${content.value}]`, targetW / 2, targetH / 2)
+
     imageUrl = canvas.value.toDataURL('image/png', 1)
     previewUrl.value = imageUrl
   } catch (err) {
@@ -230,8 +251,8 @@ const confirmPrint = () => {
         top: 0;
         left: 0;
         display: flex;
-        align-items: center;   /* 垂直置中 */
-        justify-content: center; /* 水平置中 */
+        align-items: center;
+        justify-content: center;
       }
       img {
         width: 100%;
@@ -256,7 +277,6 @@ const confirmPrint = () => {
   win.document.close()
   closePreview()
 }
-
 
 const goToGallery = () => {
   router.push('/pictureBoard')
