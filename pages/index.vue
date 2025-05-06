@@ -246,18 +246,20 @@ const confirmPrint = () => {
       .print-wrapper {
         width: 148mm;
         height: 105mm;
-        padding: 0mm;
-        position: absolute;
+        padding: 0;
+        margin: 0;
+        position: relative;
         top: 0;
-        left: -1.5mm;
+        left: 0;
         display: flex;
         align-items: center;
         justify-content: center;
+        overflow: hidden;
       }
       img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
         display: block;
       }
     }
