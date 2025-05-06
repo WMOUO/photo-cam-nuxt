@@ -246,7 +246,6 @@ const confirmPrint = () => {
       .print-wrapper {
         width: 148mm;
         height: 105mm;
-        padding: 0;
         margin: 0;
         position: relative;
         top: 0;
