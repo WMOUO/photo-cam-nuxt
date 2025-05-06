@@ -249,7 +249,7 @@ const confirmPrint = () => {
         padding: 0mm;
         position: absolute;
         top: 0;
-        left: 0;
+        left: -1.5mm;
         display: flex;
         align-items: center;
         justify-content: center;
