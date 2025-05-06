@@ -181,7 +181,7 @@ const capturePhoto = async () => {
     ctx.drawImage(video.value, offsetX, offsetY, drawW, drawH)
     ctx.restore()
 
-    ctx.font = '900 96px "Lexend", sans-serif'
+    ctx.font = '900 120px "Lexend", sans-serif'
     ctx.fillStyle = 'white'
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
